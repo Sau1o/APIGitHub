@@ -9,7 +9,7 @@ const Profile = () => (
     <Header>
       <Avatar src="https://avatars.githubusercontent.com/u/30470257?v=4" />
       <Login>Saulo Coelho</Login>
-      <Name>Dev Samurai</Name>
+      <Name>Desenvolvedor</Name>
     </Header>
     <Inner>
       <Data>

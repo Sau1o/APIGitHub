@@ -18,7 +18,7 @@ export const Header = styled.div`
 export const Avatar = styled.img`
   align-self: center;
   border-radius: 50%;
-  width: 70%;
+  width: 60%;
   margin-bottom: 1rem;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -31,11 +31,13 @@ export const Avatar = styled.img`
 
 export const Login = styled.h1`
   font-size: ${(props) => props.theme.fontSizes.title};
+  text-align: center;
 `;
 
 export const Name = styled.h2`
   font-size: ${(props) => props.theme.fontSizes.subtitle};
   font-weight: normal;
+  text-align: center;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: none;

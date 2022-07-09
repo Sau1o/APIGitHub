@@ -14,7 +14,6 @@ const Repositories = () => (
     <Repository />
     <Repository />
     <Repository />
-
   </Container>
 );
 

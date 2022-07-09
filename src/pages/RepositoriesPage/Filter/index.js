@@ -4,9 +4,10 @@ import { Container, Selector, Cleaner } from './styles';
 
 const Filter = () => {
   const langs = [
-    { name: 'JavaScript', count: 5, color: '#f1c40f' },
-    { name: 'Shell', count: 2, color: '#95a5a6' },
+    { name: 'HTML', count: 5, color: '#f1c40f' },
+    { name: 'ReactNative', count: 5, color: '#95a5a6' },
     { name: 'Python', count: 10, color: '#3498db' },
+    { name: 'React', count: 8, color: '#2ecc71' },
   ];
 
   const selectors = langs.map(({ name, count, color }) => (

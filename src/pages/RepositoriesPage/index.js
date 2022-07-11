@@ -23,28 +23,46 @@ const RepositoriesPage = () => {
   // eslint-disable-next-line no-unused-vars
   const repositories = [
     {
+      id: '1',
       name: 'Repo1',
       description: 'Descrição',
       html_url: 'https://google.com.br',
       language: 'Python',
     },
     {
+      id: '2',
       name: 'Repo2',
       description: 'Descrição',
       html_url: 'https://google.com.br',
       language: 'React',
     },
     {
+      id: '3',
       name: 'Repo3',
       description: 'Descrição',
       html_url: 'https://google.com.br',
       language: 'ReactNative',
     },
     {
+      id: '4',
       name: 'Repo4',
       description: 'Descrição',
       html_url: 'https://google.com.br',
       language: 'ReactNative',
+    },
+    {
+      id: '5',
+      name: 'Repo5',
+      description: 'Descrição',
+      html_url: 'https://google.com.br',
+      language: 'JavaScript',
+    },
+    {
+      id: '6',
+      name: 'Repo6',
+      description: 'Descrição',
+      html_url: 'https://google.com.br',
+      language: 'PHP',
     },
   ];
 
@@ -57,7 +75,7 @@ const RepositoriesPage = () => {
         <Filter languages={languages} />
       </Sidebar>
       <Main>
-        <Repositories />
+        <Repositories repositories={repositories} />
       </Main>
     </Container>
   );

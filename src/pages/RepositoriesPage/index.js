@@ -6,6 +6,8 @@ import Repositories from './Repositories';
 
 import { Container, Sidebar, Main } from './styles';
 
+import { getLangsFrom } from '../../services/api';
+
 const RepositoriesPage = () => {
   const user = {
     login: 'Sau1o',
@@ -38,15 +40,15 @@ const RepositoriesPage = () => {
       html_url: 'https://google.com.br',
       language: 'ReactNative',
     },
+    {
+      name: 'Repo4',
+      description: 'Descrição',
+      html_url: 'https://google.com.br',
+      language: 'ReactNative',
+    },
   ];
 
-  // calculo dos filters
-  const languages = [
-    { name: 'HTML', count: 5, color: '#f1c40f' },
-    { name: 'ReactNative', count: 5, color: '#95a5a6' },
-    { name: 'Python', count: 10, color: '#3498db' },
-    { name: 'React', count: 8, color: '#2ecc71' },
-  ];
+  const languages = getLangsFrom(repositories);
 
   return (
     <Container>

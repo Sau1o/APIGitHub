@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Profile from './Profile';
 import Filter from './Filter';
@@ -9,6 +9,8 @@ import { Container, Sidebar, Main } from './styles';
 import { getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
+  const [currentLanguage, setCurrentLanguage] = useState();
+
   const user = {
     login: 'Sau1o',
     avatar_url: 'https://avatars.githubusercontent.com/u/30470257?v=4',
@@ -57,25 +59,29 @@ const RepositoriesPage = () => {
       html_url: 'https://google.com.br',
       language: 'JavaScript',
     },
-    {
-      id: '6',
-      name: 'Repo6',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'PHP',
-    },
   ];
 
   const languages = getLangsFrom(repositories);
+
+  const onFilerClick = (language) => {
+    setCurrentLanguage(language);
+  };
 
   return (
     <Container>
       <Sidebar>
         <Profile user={user} />
-        <Filter languages={languages} />
+        <Filter
+          languages={languages}
+          currentLanguage={currentLanguage}
+          onClick={onFilerClick}
+        />
       </Sidebar>
       <Main>
-        <Repositories repositories={repositories} />
+        <Repositories
+          repositories={repositories}
+          currentLanguage={currentLanguage}
+        />
       </Main>
     </Container>
   );

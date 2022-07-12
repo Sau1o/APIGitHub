@@ -1,26 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Profile from './Profile';
 import Filter from './Filter';
 import Repositories from './Repositories';
 
-import { Container, Sidebar, Main } from './styles';
+import { Loading, Container, Sidebar, Main } from './styles';
 
-import { getLangsFrom } from '../../services/api';
+import { getUser, getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
+  const [user, setUser] = useState();
   const [currentLanguage, setCurrentLanguage] = useState();
+  const [loading, setLoading] = useState(true);
 
-  const user = {
-    login: 'Sau1o',
-    avatar_url: 'https://avatars.githubusercontent.com/u/30470257?v=4',
-    name: 'Saulo Coelho',
-    followers: 26,
-    following: 19,
-    company: null,
-    blog: 'https://google.com.br',
-    location: 'Bauru - SP',
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      const [userResponse] = await Promise.all([getUser('Sau1o')]);
+      setUser(userResponse.data);
+
+      setLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  // const user = {
+  //   login: 'Sau1o',
+  //   avatar_url: 'https://avatars.githubusercontent.com/u/30470257?v=4',
+  //   name: 'Saulo Coelho',
+  //   followers: 26,
+  //   following: 19,
+  //   company: null,
+  //   blog: 'https://google.com.br',
+  //   location: 'Bauru - SP',
+  // };
 
   // eslint-disable-next-line no-unused-vars
   const repositories = [
@@ -66,6 +79,10 @@ const RepositoriesPage = () => {
   const onFilerClick = (language) => {
     setCurrentLanguage(language);
   };
+
+  if (loading) {
+    return <Loading>Carregando...</Loading>;
+  }
 
   return (
     <Container>

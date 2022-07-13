@@ -1,80 +1,40 @@
 import React, { useState, useEffect } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import Profile from './Profile';
 import Filter from './Filter';
 import Repositories from './Repositories';
 
 import { Loading, Container, Sidebar, Main } from './styles';
 
-import { getUser, getLangsFrom } from '../../services/api';
+import { getUser, getRepos, getLangsFrom } from '../../services/api';
 
 const RepositoriesPage = () => {
+  const { login } = useParams();
+
   const [user, setUser] = useState();
+  const [repositories, setRepositories] = useState();
+  const [languages, setLanguages] = useState();
   const [currentLanguage, setCurrentLanguage] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
-      const [userResponse] = await Promise.all([getUser('Sau1o')]);
+      const [userResponse, repositoriesResponse] = await Promise.all([
+        getUser(login),
+        getRepos(login),
+      ]);
+
       setUser(userResponse.data);
+      setRepositories(repositoriesResponse.data);
+      setLanguages(getLangsFrom(repositoriesResponse.data));
 
       setLoading(false);
     };
 
     loadData();
   }, []);
-
-  // const user = {
-  //   login: 'Sau1o',
-  //   avatar_url: 'https://avatars.githubusercontent.com/u/30470257?v=4',
-  //   name: 'Saulo Coelho',
-  //   followers: 26,
-  //   following: 19,
-  //   company: null,
-  //   blog: 'https://google.com.br',
-  //   location: 'Bauru - SP',
-  // };
-
-  // eslint-disable-next-line no-unused-vars
-  const repositories = [
-    {
-      id: '1',
-      name: 'Repo1',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'Python',
-    },
-    {
-      id: '2',
-      name: 'Repo2',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'React',
-    },
-    {
-      id: '3',
-      name: 'Repo3',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'ReactNative',
-    },
-    {
-      id: '4',
-      name: 'Repo4',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'ReactNative',
-    },
-    {
-      id: '5',
-      name: 'Repo5',
-      description: 'Descrição',
-      html_url: 'https://google.com.br',
-      language: 'JavaScript',
-    },
-  ];
-
-  const languages = getLangsFrom(repositories);
 
   const onFilerClick = (language) => {
     setCurrentLanguage(language);

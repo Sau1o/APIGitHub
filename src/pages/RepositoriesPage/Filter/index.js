@@ -6,7 +6,7 @@ import { Container, Selector, Cleaner } from './styles';
 const Filter = ({ languages, currentLanguage, onClick }) => {
   const selectors = languages.map(({ name, count, color }) => (
     <Selector
-      key={name.toLocaleLowerCase()}
+      key={name.toLowerCase()}
       color={color}
       className={currentLanguage === name ? 'selected' : ''}
       onClick={() => onClick && onClick(name)}

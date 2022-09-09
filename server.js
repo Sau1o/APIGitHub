@@ -1,1 +1,1 @@
-console.log('Chegou aqui')
+console.log('Chegou aqui');

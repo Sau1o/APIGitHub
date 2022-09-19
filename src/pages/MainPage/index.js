@@ -14,7 +14,7 @@ const MainPage = () => {
       <Title>API Github</Title>
       <Form>
         <Input
-          placeholder="usuario"
+          placeholder="usuário"
           value={login}
           onChange={(event) => setLogin(event.target.value)}
         />

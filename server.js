@@ -12,14 +12,14 @@ app.listen(process.env.PORT || 3000, (err) => {
   console.log('Tudo funcionando');
 });
 */
-const express = require('express');
+// const express = require('express');
 
-const app = express();
+// const app = express();
 
-app.use(express.static('build'));
+// app.use(express.static('build'));
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'build/'})
-);
+// app.get('/*', (req, res) =>
+//     res.sendFile('index.html', {root: 'build/'})
+// );
 
-app.listen(process.env.PORT || 8080);
+// app.listen(process.env.PORT || 8080);
